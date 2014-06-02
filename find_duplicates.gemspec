@@ -6,11 +6,11 @@ require 'find_duplicates/version'
 Gem::Specification.new do |spec|
   spec.name          = "find_duplicates"
   spec.version       = FindDuplicates::VERSION
-  spec.authors       = ["adam klein"]
-  spec.email         = ["adamklein.mail@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.authors       = ["adam klein", "500tech"]
+  spec.email         = ["adam@500tech.com", "info@500tech.com"]
+  spec.summary       = %q{adds methods to find duplicate rows to AR models}
+  spec.description   = %q{adds methods to find duplicate rows to AR models}
+  spec.homepage      = "https://github.com/500tech/find_duplicates"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
