@@ -59,6 +59,15 @@ instance methods also work with multiple fields:
 > @user4.duplicates_with_self(:first_name, :last_name)    # => [@user4, @user5]
 ```
 
+## The underlying SQL
+Assuming the table is users and the fields are first_name, last_name:
+> "select * from users join (
+            select first_name, last_name, count(*) as qty
+            from users
+            group by first_name, last_name
+            having count(*) > 1
+        ) t on t.first_name = users.first_name AND t.last_name = users.last_name"
+
 ## Contributing
 
 1. Fork it
