@@ -1,8 +1,7 @@
 # FindDuplicates
 
-This is home to the find_duplicates GEM.
-
-Use it to add methods to ActiveRecord models, that allow to find rows with duplicate values in certain columns. For example, find all users with the same first name, or find all items with the same price as a specific item.
+This GEM allows you to find duplicate models with same value for a column, e.g.:
+Find all users with the same first name.
 
 Just add 'find_duplicates' to your Gemfile, and you automatically enhance your AR models functionality.
 
@@ -39,11 +38,25 @@ class methods:
 > User.duplicates(:last_name)           # => [@user1, @user2]
 ```
 
+also works with multiple fields:
+```ruby
+> @user4 = User.create first_name: 'John', last_name: 'Major'
+> @user5 = User.create first_name: 'John', last_name: 'Major'
+> User.duplicates(:first_name, :last_name)         # => [@user4, @user5]
+> User.duplicates([:first_name, :last_name])       # => [@user4, @user5]
+```
+
 instance methods:
 ```ruby
 > @user1.duplicate?(:first_name)             # => true
 > @user1.duplicates(:first_name)             # => [@user3]
 > @user1.duplicates_with_self(:last_name)    # => [@user1, @user2]
+```
+
+instance methods also work with multiple fields:
+```ruby
+> @user1.duplicates_with_self(:first_name, :last_name)    # => []
+> @user4.duplicates_with_self(:first_name, :last_name)    # => [@user4, @user5]
 ```
 
 ## Contributing
