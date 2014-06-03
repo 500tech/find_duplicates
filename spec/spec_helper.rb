@@ -28,7 +28,15 @@ def setup
       t.column :title, :string
     end
   end
+  ActiveRecord::Schema.define do
+    create_table :test_duplicates_multiples, force: true do |t|
+      t.column :first_name, :string
+      t.column :last_name, :string
+    end
+  end
 end
 
 class TestDuplicates < ActiveRecord::Base
+end
+class TestDuplicatesMultiple < ActiveRecord::Base
 end
